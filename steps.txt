@@ -1,0 +1,77 @@
+
+ Step 1: Create Project Folder
+Folder structure:**
+
+```
+my-python-app/
+├── app/
+│   ├── __init__.py
+│   ├── routes.py      # with insecure code
+│   └── utils.py
+├── requirements.txt
+├── sonar-project.properties
+├── README.md
+├── .github/
+│   └── workflows/
+│       ├── codeql-analysis.yml
+│       └── sonarcloud.yml
+```
+
+---
+
+### 🔹 Step 2: Push to GitHub
+
+1. Create a **new GitHub repo**
+2. Push the entire folder structure
+
+---
+
+### 🔹 Step 3: Set Up **CodeQL Scan**
+
+1. Add `.github/workflows/codeql-analysis.yml`
+   (Use the CodeQL workflow config provided earlier)
+
+2. GitHub will automatically scan for security issues
+
+---
+
+### 🔹 Step 4: Set Up **SonarCloud Scan**
+
+1. Create a free account at [https://sonarcloud.io](https://sonarcloud.io)
+2. Connect your **GitHub repo**
+3. Add `sonar-project.properties` in root folder:
+
+```sonar.projectKey=arvind761999_Identify_Security_BY_SonarQube
+sonar.organization=sonarqube15
+```
+
+4. Add `.github/workflows/sonarcloud.yml`
+   (Use SonarCloud GitHub Actions workflow from earlier)
+
+5. Generate a **SONAR\_TOKEN** on SonarCloud
+
+6. Add it to GitHub repo:
+
+   * Settings → Secrets → Actions → New Secret → `SONAR_TOKEN`
+
+---
+
+### 🔹 Step 5: Push Code and Trigger Both Scans
+
+* Push any change to `main` branch
+* Both CodeQL and SonarCloud will run automatically
+
+---
+
+### 🔹 Step 6: View Results
+
+| Tool           | Where to See Results                                             |
+| -------------- | ---------------------------------------------------------------- |
+| **CodeQL**     | GitHub → Security → Code scanning alerts                         |
+| **SonarCloud** | [https://sonarcloud.io/projects](https://sonarcloud.io/projects) |
+
+---
+
+### 🎉 Done!
+
+
